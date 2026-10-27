@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VOLTIX | Online Gadget Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-view="shop"><span>⚡</span> VOLTIX</a>
+    <nav>
+      <button class="navbtn active" data-view="shop">Shop</button>
+      <button class="navbtn" data-view="orders">My Orders</button>
+      <button class="navbtn admin-only hidden" data-view="admin">Admin Dashboard</button>
+    </nav>
+    <div class="account">
+      <span id="session-label">Guest</span>
+      <button id="login-open" class="btn btn-outline">Login</button>
+      <button id="logout-btn" class="btn btn-outline hidden">Logout</button>
+      <button id="cart-open" class="btn">Cart <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow"><span class="live-dot"></span> THE VOLTIX TECH EDITION</p>
+        <h1>Shop smart.<br><span>Choose your next tech.</span></h1>
+        <p class="hero-copy">Explore carefully selected smartphones, computers, audio gear, gaming essentials, and smart accessories.</p>
+        <button class="btn" data-view="shop">Explore products</button>
+      </div>
+      <div class="hero-product-stage" aria-label="Featured technology products">
+        <div class="device device-phone"></div><div class="device device-laptop"></div><div class="device device-earbuds"></div>
+        <span class="stage-tag">UPGRADE YOUR EVERYDAY</span>
+      </div>
+    </section>
+
+    <section id="shop-view" class="view">
+      <div class="section-head">
+        <div><p class="eyebrow">VOLTIX CATALOG</p><h2>Shop technology</h2><p class="section-subtitle">Useful tech. Clean design. Everyday performance.</p></div>
+        <div class="filters">
+          <input id="search" placeholder="Search products..." aria-label="Search products">
+          <select id="category-filter" aria-label="Filter category">
+            <option value="All">All categories</option>
+            <option>Smartphones</option><option>Laptops</option><option>Audio</option>
+            <option>Wearables</option><option>Gaming</option><option>Accessories</option><option>Computer Accessories</option>
+          </select>
+          <select id="sort-filter" aria-label="Sort products">
+            <option value="featured">Featured</option><option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option><option value="rating">Rating</option>
+          </select>
+        </div>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section id="orders-view" class="view hidden">
+      <div class="section-head"><div><p class="eyebrow">ORDER HISTORY</p><h2>My orders</h2></div></div>
+      <div id="customer-orders"></div>
+    </section>
+
+    <section id="admin-view" class="view hidden">
+      <div class="section-head"><div><p class="eyebrow">STORE MANAGEMENT</p><h2>Admin dashboard</h2></div></div>
+      <div class="admin-stats" id="admin-stats"></div>
+      <div class="admin-layout">
+        <div class="panel">
+          <h3>Add a product</h3>
+          <form id="product-form" class="stack">
+            <label>Product name<input name="name" required maxlength="70"></label>
+            <label>Category<select name="category" required><option>Smartphones</option><option>Laptops</option><option>Audio</option><option>Wearables</option><option>Gaming</option><option>Accessories</option><option>Computer Accessories</option></select></label>
+            <label>Price (₱)<input name="price" type="number" min="1" step="1" required></label>
+            <label>Short description<input name="description" required maxlength="140"></label>
+            <label>Emoji / icon<input name="emoji" maxlength="5" value="📦"></label>
+            <button class="btn" type="submit">Add product</button>
+          </form>
+        </div>
+        <div class="panel">
+          <h3>Manage products</h3>
+          <div id="admin-products"></div>
+        </div>
+      </div>
+      <div class="panel order-admin-panel">
+        <h3>Customer orders</h3>
+        <p class="muted">Change the status manually. This is not live GPS or courier tracking.</p>
+        <div id="admin-orders"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><strong>⚡ VOLTIX</strong><span>Shop smart. Tech that moves you.</span><span>Technology essentials for work, play, and everything in between.</span></footer>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="close" aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
